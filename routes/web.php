@@ -23,7 +23,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', WelcomeController::class);
+Route::redirect('/', '/login');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

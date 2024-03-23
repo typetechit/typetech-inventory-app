@@ -1,4 +1,4 @@
-import AuthenticatedLayout, {DashboardPageContainer} from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout, {DashboardPageContainer, PageHeader} from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/Components/ui/card";
@@ -11,18 +11,18 @@ export default function ReportsIndexPage({auth}: PageProps) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Reports</h2>}
+            header={<PageHeader title={'Reports'} />}
         >
             <Head title="Reports" />
 
-            <DashboardPageContainer>
+            <div className={`container`}>
                 <Card>
                     <CardContent className={`p-4`}>
                         Your Reports Page
                     </CardContent>
                 </Card>
 
-            </DashboardPageContainer>
+            </div>
         </AuthenticatedLayout>
     );
 }

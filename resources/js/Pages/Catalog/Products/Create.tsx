@@ -1,4 +1,4 @@
-import AuthenticatedLayout, {DashboardPageContainer} from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout, {DashboardPageContainer, PageHeader} from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import {Card, CardContent} from "@/Components/ui/card";
@@ -10,17 +10,17 @@ export default function ProductCreatePage({ auth, categories }: PageProps<{categ
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Add Product</h2>}
+            header={<PageHeader title={'Add Catalog Product'} />}
         >
-            <Head title="Add Product" />
+            <Head title="Add Catalog Product" />
 
-            <DashboardPageContainer>
+            <div className={`container`}>
                 <Card>
                     <CardContent className={`p-4`}>
                         <ProductCreateForm categories={categoriesOptions} />
                     </CardContent>
                 </Card>
-            </DashboardPageContainer>
+            </div>
         </AuthenticatedLayout>
     );
 }

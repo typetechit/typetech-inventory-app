@@ -1,4 +1,4 @@
-import AuthenticatedLayout, {DashboardPageContainer} from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout, {DashboardPageContainer, PageHeader} from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import {PageProps} from "@/types";
 import {Card, CardContent} from "@/Components/ui/card";
@@ -9,17 +9,17 @@ export default function BranchesIndexPage({ auth, branches }: PageProps<{branche
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Branches</h2>}
+            header={<PageHeader title={'Branches'} />}
         >
             <Head title="Branches" />
 
-            <DashboardPageContainer>
+            <div className={`container`}>
                 <Card>
                     <CardContent className={`p-4`}>
-                        <BranchesDataTable branches={branches} />
+                        <BranchesDataTable branches={branches}/>
                     </CardContent>
                 </Card>
-            </DashboardPageContainer>
+            </div>
         </AuthenticatedLayout>
     );
 }

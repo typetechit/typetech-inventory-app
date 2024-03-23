@@ -1,4 +1,4 @@
-import AuthenticatedLayout, {DashboardPageContainer} from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout, {DashboardPageContainer, PageHeader} from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import {Card, CardContent} from "@/Components/ui/card";
@@ -9,9 +9,9 @@ export default function CategoriesIndexPage({ auth, categories }: PageProps<{cat
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Categories</h2>}
+            header={<PageHeader title={'Catalog Categories'} />}
         >
-            <Head title="Categories" />
+            <Head title="Catalog Categories" />
 
             <DashboardPageContainer>
                 <Card>

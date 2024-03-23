@@ -1,4 +1,4 @@
-import AuthenticatedLayout, {DashboardPageContainer} from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout, {DashboardPageContainer, PageHeader} from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/Components/ui/card";
@@ -11,7 +11,7 @@ export default function WarehouseIndex({auth}: PageProps) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Warehouse</h2>}
+            header={<PageHeader title={'Warehouse'} action={<WarehousePageAction />} />}
         >
             <Head title="Warehouse" />
 
@@ -24,5 +24,14 @@ export default function WarehouseIndex({auth}: PageProps) {
 
             </DashboardPageContainer>
         </AuthenticatedLayout>
+    );
+}
+
+
+export function WarehousePageAction () {
+    return (
+        <div>
+            Warehouse Page Action
+        </div>
     );
 }
