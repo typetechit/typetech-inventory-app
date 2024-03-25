@@ -43,18 +43,6 @@ function Navbar({ user }: { user: any }) {
         <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
             <div className="container">
                 <div className="flex items-center justify-between gap-4 h-16">
-                    <div className="-me-2 flex items-center">
-                        <Button
-                            type={'button'}
-                            onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out"
-                            size={'icon'}
-                            variant={'outline'}
-                        >
-                            <Bars3BottomLeftIcon />
-                        </Button>
-                    </div>
-
                     <div className="flex">
                         <div className="shrink-0 flex items-center">
                             <Link href="/">
@@ -114,15 +102,17 @@ function AuthUserDropDown({ user }: { user: any }) {
                         <AvatarImage
                             src="https://github.com/shadcn.png"
                             alt={`${user?.name}'s Photo`}
+                            className={`w-10 h-10`}
                         />
                         <AvatarFallback>{user?.name}</AvatarFallback>
                     </Avatar>
 
-                    <span>{user.name}</span>
+                    <span className={`text-gray-500`}>{user.name}</span>
                     <ChevronDown className={`w-4 h-4 text-gray-500`} />
                 </span>
 
             </DropdownMenuTrigger>
+
             <DropdownMenuContent>
 
                 <DropdownMenuLabel>
@@ -184,7 +174,7 @@ export function PageHeader({title, action}: { title: any, action?: any }) {
         <Card className={`border-none shadow-none`}>
             <div className={`container`}>
                 <CardHeader className={`px-0`}>
-                    <div className={`flex items-center justify-between`}>
+                    <div className={`flex items-center justify-between flex-wrap gap-4`}>
                         <div className={`flex items-center gap-4`}>
                             <GoBack/>
 

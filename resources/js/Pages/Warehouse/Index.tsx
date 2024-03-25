@@ -125,6 +125,13 @@ export function WarehousePageAction () {
 
             <BranchOrdersDropdown />
 
+            <Button variant={'outline'} asChild>
+                <Link href={'/warehouse/receive-order'}>Receive Order</Link>
+            </Button>
+
+            <Button variant={'outline'} asChild>
+                <Link href={'/warehouse/deliver-order'}>Deliver Order</Link>
+            </Button>
         </div>
     );
 }

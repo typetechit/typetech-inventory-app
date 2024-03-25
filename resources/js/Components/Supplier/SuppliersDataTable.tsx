@@ -40,6 +40,9 @@ import {
     TableRow,
 } from "@/Components/ui/table"
 import {Link} from "@inertiajs/react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar"
+import {EyeIcon} from "@heroicons/react/24/solid";
+import {FaEye, FaPencil} from "react-icons/fa6";
 
 
 export type SuppliersDataInterface = {
@@ -78,6 +81,17 @@ export const columns: ColumnDef<SuppliersDataInterface>[] = [
     {
         accessorKey: "logo",
         header: "Logo",
+        cell: ({ row }) => {
+
+            const supplier: any = row.original
+
+            return (
+                <Avatar>
+                    <AvatarImage src={supplier?.photo} />
+                    <AvatarFallback>supplier?.name</AvatarFallback>
+                </Avatar>
+            )
+        },
     },
     {
         accessorKey: "code",
@@ -103,26 +117,22 @@ export const columns: ColumnDef<SuppliersDataInterface>[] = [
         id: "actions",
         enableHiding: false,
         cell: ({ row }: { row: any}) => {
-
+            const supplier: any = row.original
             return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <DotsHorizontalIcon className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(row?.original?.id)}
-                        >
-                            Copy payment ID
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <div className={'flex items-center gap-4'}>
+
+                    <Button variant={'outline'} size={'icon'}>
+                        <Link href={route('suppliers.show', { supplier: supplier.id})}>
+                            <FaEye />
+                        </Link>
+                    </Button>
+
+                    <Button variant={'outline'} size={'icon'}>
+                        <Link href={route('suppliers.edit', { supplier: supplier.id})}>
+                            <FaPencil />
+                        </Link>
+                    </Button>
+                </div>
             )
         },
     },

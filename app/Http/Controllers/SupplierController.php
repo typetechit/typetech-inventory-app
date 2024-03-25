@@ -44,12 +44,17 @@ class SupplierController extends Controller
 
         $newSupplier = Supplier::create($request->all());
 
+        $updatableData = [];
+
         if($request->hasFile('photo')){
-            $path = $request->photo->store('images');
-            $newSupplier->update([
-                'photo' => $path
-            ]);
+            $path = $request
+                ->file('photo')
+                ->store('supplier_images', 'public');
+
+            $updatableData['photo'] = $path;
         }
+
+        $newSupplier->update($updatableData);
 
         return to_route('suppliers.show', ["supplier" => $newSupplier->id]);
     }
